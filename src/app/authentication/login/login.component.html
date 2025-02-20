@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #FFC107; font-family: Arial, sans-serif;">
+
+    <div style="display: flex; flex-wrap: wrap; background: #fff; max-width: 800px; width: 100%; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); overflow: hidden;">
+        
+        <!-- School Icon Section -->
+        <div style="flex: 1; min-width: 250px; background-color: black; display: flex; align-items: center; justify-content: center; padding: 20px;">
+            <i class="fas fa-school-flag fa-5x" style="color: #FFC107;"></i>
+        </div>
+
+        <!-- Login Form Section -->
+        <div style="flex: 1.5; min-width: 300px; padding: 40px;">
+            <h2 style="text-align: center; margin-bottom: 20px; color: black; font-weight: bold;">School Management System</h2>
+
+            <form style="margin-top: 20px;">
+                <div style="margin-bottom: 15px;">
+                    <label for="username" style="font-weight: bold;">Username</label>
+                    <input id="username" type="text" placeholder="Enter your username"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-top: 5px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label for="password" style="font-weight: bold;">Password</label>
+                    <input id="password" type="password" placeholder="Enter your password"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-top: 5px;">
+                </div>
+
+                <!-- Temporary fix: Ensure router navigation works -->
+<a routerLink="/dashboard" 
+style="display: block; text-align: center; width: 100%;">
+<button style="width: 100%; padding: 10px; background-color: black; color: yellow; 
+               border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+    Sign In
+</button>
+</a>
+
+
+            </form>
+
+            <div style="text-align: center; margin-top: 15px;">
+                <p>Forgot password? 
+                    <a [routerLink]="['/forgotpassword']" style="color: #FFC107; font-weight: bold;">Reset here</a>
+                  </p>
+                  
+                <!-- <p>Don't have an account? <a href="#" style="color: #FFC107; font-weight: bold;">Register</a></p> -->
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
