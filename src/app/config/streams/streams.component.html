@@ -1,1 +1,33 @@
-<p>streams works!</p>
+<div style="max-width: 500px; margin: auto; padding: 20px; background: #f8f9fa; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; color: black;">Configure Student Stream</h2>
+  
+    <form (ngSubmit)="submitStream()" style="display: flex; flex-direction: column;">
+      
+      <!-- ID Input -->
+      <label for="id" style="margin-bottom: 5px; font-weight: bold;">ID:</label>
+      <input type="number" id="id" [(ngModel)]="stream.id" name="id" required
+        style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px;">
+  
+      <!-- Class Name Selection -->
+      <label for="className" style="margin-bottom: 5px; font-weight: bold;">Class Name:</label>
+      <select id="className" [(ngModel)]="stream.className" name="className" required
+        style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px;">
+        <option value="">Select Class</option>
+        <option *ngFor="let class of classNames" [value]="class">{{ class }}</option>
+      </select>
+  
+      <!-- Stream Name Selection -->
+      <label for="streamName" style="margin-bottom: 5px; font-weight: bold;">Stream Name:</label>
+      <select id="streamName" [(ngModel)]="stream.streamName" name="streamName" required
+        style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px;">
+        <option value="">Select Stream</option>
+        <option *ngFor="let stream of streamNames" [value]="stream">{{ stream }}</option>
+      </select>
+  
+      <!-- Submit Button -->
+      <button type="submit" style="padding: 10px; background: black; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
+        Save Stream
+      </button>
+    </form>
+  </div>
+  

@@ -1,7 +1,22 @@
 
 
 <app-sidebar></app-sidebar>
+<div style="max-width: 500px; margin: auto; padding: 20px; background: #f8f9fa; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; background-color: black; color: white; padding: 15px; border-radius: 5px;">
+        <i class="fa fa-graduation-cap"></i> Grading System
+    </h2>
 
-<p>grades works!</p>
+    <!-- Input for Marks -->
+    <label for="marks" style="font-weight: bold;">Enter Marks:</label>
+    <input type="number" id="marks" [(ngModel)]="marks" (input)="calculateGrade()" 
+        style="width: 100%; padding: 10px; border: 1px solid black; margin-bottom: 10px; border-radius: 5px;" 
+        min="0" max="100" placeholder="Enter marks (0 - 100)">
+
+    <!-- Display Grade -->
+    <div *ngIf="grade !== ''" style="margin-top: 10px; font-size: 18px; font-weight: bold; text-align: center;">
+        Grade: <span [style.color]="gradeColor">{{ grade }}</span>
+    </div>
+</div>
+
 
 

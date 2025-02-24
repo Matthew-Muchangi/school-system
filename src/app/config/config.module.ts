@@ -6,11 +6,11 @@ import { ConfigRoutingModule } from './config-routing.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SubjectsComponent } from './subjects/subjects.component';
-import { StreamsComponent } from './streams/streams.component';
 import { GradesComponent } from './grades/grades.component';
 import { ClassesComponent } from './classes/classes.component';
 import { SidebarComponent } from '../layout/sidebar/sidebar.component';
 import { ConfigLayoutComponent } from './config-layout/config-layout.component';
+import { StreamsComponent } from './streams/streams.component';
 
 
 @NgModule({
