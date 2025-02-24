@@ -1,0 +1,74 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+
+<nav style="width: 250px; height: 100vh; background: black; color: white; position: fixed; top: 0; left: 0; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <h4 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Student Management</h4>
+  
+      <!-- Dashboard Link -->
+      <a routerLink="/dashboard" style="text-decoration: none; display: block; margin-bottom: 10px;">
+        <button style="width: 100%; padding: 12px; border: none; background: black; color: white; font-weight: bold; border-radius: 5px; text-align: left; display: flex; align-items: center;">
+          <i class="fa-solid fa-house-user" style="color: #ffffff; margin-right: 10px;"></i> Dashboard
+        </button>
+      </a>
+  
+      <!-- Config Dropdown -->
+      <div class="dropdown-container" style="margin-bottom: 10px;">
+        <button (click)="toggleConfigDropdown()" style="width: 100%; padding: 12px; border: none; background: black; color: white; font-weight: bold; border-radius: 5px; text-align: left; display: flex; align-items: center;">
+          <i class="fa-solid fa-cog" style="color: #ffffff; margin-right: 10px;"></i> Configuration
+          <i class="fa-solid fa-chevron-down" style="color: #ffffff; margin-left: auto;"></i>
+        </button>
+        <div *ngIf="configDropdownOpen" style="padding-left: 20px; margin-top: 5px;">
+          <a routerLink="/subjects" style="text-decoration: none; display: block; margin-top: 5px;">
+            <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
+              <i class="fa-solid fa-book" style="color: #ffffff; margin-right: 10px;"></i> Subjects
+            </button>
+          </a>
+          <a routerLink="/streams" style="text-decoration: none; display: block; margin-top: 5px;">
+            <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
+              <i class="fa-solid fa-school" style="color: #ffffff; margin-right: 10px;"></i> Streams
+            </button>
+          </a>
+
+          <a routerLink="/grades" style="text-decoration: none; display: block; margin-top: 5px;">
+            <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
+              <i class="fa-solid fa-chart-line" style="color: #ffffff; margin-right: 10px;"></i> Grades
+            </button>
+          </a>
+        </div>
+      </div>
+  
+      <!-- Students Dropdown -->
+      <div class="dropdown-container" style="margin-bottom: 10px;">
+        <button (click)="toggleStudentsDropdown()" style="width: 100%; padding: 12px; border: none; background: black; color: white; font-weight: bold; border-radius: 5px; text-align: left; display: flex; align-items: center;">
+          <i class="fa-solid fa-users" style="color: #ffffff; margin-right: 10px;"></i> Students
+          <i class="fa-solid fa-chevron-down" style="color: #ffffff; margin-left: auto;"></i>
+        </button>
+        <div *ngIf="studentsDropdownOpen" style="padding-left: 20px; margin-top: 5px;">
+          <a routerLink="/streams" style="text-decoration: none; display: block; margin-top: 5px;">
+            <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
+              <i class="fa-solid fa-stream" style="color: #ffffff; margin-right: 10px;"></i> Streams
+            </button>
+          </a>
+          <a routerLink="/grades" style="text-decoration: none; display: block; margin-top: 5px;">
+            <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
+              <i class="fa-solid fa-chart-line" style="color: #ffffff; margin-right: 10px;"></i> Grades
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Logout Button -->
+    <a routerLink="/" style="text-decoration: none;">
+      <button style="width: 100%; padding: 12px; border: none; background: black; color: white; font-weight: bold; border-radius: 5px; display: flex; align-items: center;">
+        <i class="fa-solid fa-sign-out-alt" style="color: #ffffff; margin-right: 10px;"></i> Logout
+      </button>
+    </a>
+  </nav>
+  

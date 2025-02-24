@@ -7,9 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ConfigModule } from './config/config.module';
 import { StudentModule } from './student/student.module';
+
+
 @NgModule({
   declarations: [
     AppComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -17,8 +20,8 @@ import { StudentModule } from './student/student.module';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AuthenticationModule,
-    ConfigModule,
-    StudentModule
+    StudentModule,
+    ConfigModule
   ],
   providers: [],
   bootstrap: [AppComponent]

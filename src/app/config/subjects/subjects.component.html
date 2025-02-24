@@ -1,0 +1,35 @@
+<div style="max-width: 400px; margin: auto; padding: 20px; background: #f8f9fa; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center;">Add Subject</h2>
+  
+
+
+    
+    <!-- Subject Form -->
+    <div>
+      <label for="id">ID:</label>
+      <input type="number" id="id" [(ngModel)]="newSubject.id" style="width: 100%; padding: 8px; margin-bottom: 5px; border-radius: 5px; border: 1px solid #ccc;">
+      <div *ngIf="idError" style="color: red; font-size: 12px;">ID is required.</div>
+    </div>
+  
+    <div>
+      <label for="subjectName">Subject Name:</label>
+      <input type="text" id="subjectName" [(ngModel)]="newSubject.subjectName" style="width: 100%; padding: 8px; margin-bottom: 5px; border-radius: 5px; border: 1px solid #ccc;">
+      <div *ngIf="nameError" style="color: red; font-size: 12px;">Subject Name is required.</div>
+    </div>
+  
+    <button (click)="addSubject()" style="width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+      Add Subject
+    </button>
+  
+    <hr>
+  
+    <!-- Subject List -->
+    <h3>Subjects List</h3>
+    <ul style="list-style: none; padding: 0;">
+      <li *ngFor="let subject of subjects; let i = index" style="background: white; padding: 10px; margin: 5px 0; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+        <span><strong>{{ subject.id }}</strong> - {{ subject.subjectName }}</span>
+        <button (click)="removeSubject(i)" style="background: red; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">X</button>
+      </li>
+    </ul>
+  </div>
+  
