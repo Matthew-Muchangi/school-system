@@ -11,6 +11,7 @@ import { ClassesComponent } from './classes/classes.component';
 import { SidebarComponent } from '../layout/sidebar/sidebar.component';
 import { ConfigLayoutComponent } from './config-layout/config-layout.component';
 import { StreamsComponent } from './streams/streams.component';
+import { HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { StreamsComponent } from './streams/streams.component';
     CommonModule,
     RouterModule,
     FormsModule,
-    ConfigRoutingModule
+    ConfigRoutingModule,
+    HttpClientModule
   ], 
   exports: [
     SidebarComponent

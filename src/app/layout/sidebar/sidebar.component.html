@@ -11,11 +11,7 @@
       <h4 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Student Management System</h4>
   
       <!-- Dashboard Link -->
-      <a routerLink="/dashboard" style="text-decoration: none; display: block; margin-bottom: 10px;">
-        <button style="width: 100%; padding: 12px; border: none; background: black; color: white; font-weight: bold; border-radius: 5px; text-align: left; display: flex; align-items: center;">
-          <i class="fa-solid fa-house-user" style="color: #ffffff; margin-right: 10px;"></i> Dashboard
-        </button>
-      </a>
+   
   
       <!-- Admin Dropdown -->
       <div class="dropdown-container" style="margin-bottom: 10px;">
@@ -25,9 +21,15 @@
         </button>
         <div *ngIf="configDropdownOpen" style="padding-left: 20px; margin-top: 5px;">
 
+          <a routerLink="/dashboard" style="text-decoration: none; display: block; margin-bottom: 10px;">
+            <button style="width: 100%; padding: 12px; border: none; background: black; color: white; font-weight:normal; border-radius: 5px; text-align: left; display: flex; align-items: center;">
+              <i class="fa-solid fa-house-user" style="color: #ffffff; margin-right: 10px;"></i>Admin Dashboard
+            </button>
+          </a>
+
           <a routerLink="/student-details" style="text-decoration: none; display: block; margin-top: 5px;">
             <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
-              <i class="fa-solid fa-users" style="color: #ffffff; margin-right: 10px;"></i> Manage Students
+              <i class="fa-solid fa-users" style="color: #ffffff; margin-right: 10px;"></i> Add Students
             </button>
           </a>
 
@@ -57,6 +59,13 @@
           <i class="fa-solid fa-chevron-down" style="color: #ffffff; margin-left: auto;"></i>
         </button>
         <div *ngIf="studentsDropdownOpen" style="padding-left: 20px; margin-top: 5px;">
+          
+          <a routerLink="/student-dashboard" style="text-decoration: none; display: block; margin-top: 5px;">
+            <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
+              <i class="fa-solid fa-home" style="color: #ffffff; margin-right: 10px;"></i> Student Dashboard
+            </button>
+          </a>
+          
           <a routerLink="/st" style="text-decoration: none; display: block; margin-top: 5px;">
             <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
               <i class="fa-solid fa-stream" style="color: #ffffff; margin-right: 10px;"></i> Profile Details
@@ -70,7 +79,7 @@
 
           <a routerLink="/st" style="text-decoration: none; display: block; margin-top: 5px;">
             <button style="width: 100%; padding: 10px; border: none; background: black; color: white; font-weight: normal; border-radius: 5px; text-align: left;">
-              <i class="fa-solid fa-chart-line" style="color: #ffffff; margin-right: 10px;"></i> Report Card
+              <i class="fa-solid fa-clipboard" style="color: #ffffff; margin-right: 10px;"></i> Report Card
             </button>
           </a>
         </div>

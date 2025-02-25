@@ -1,48 +1,44 @@
 import { Component } from '@angular/core';
+import { ConfigService,Grade } from 'src/app/services/config.service';
 
 @Component({
-  selector: 'app-grading-system',
+  selector: 'app-grades',
   templateUrl: './grades.component.html',
   styleUrls: ['./grades.component.css']
 })
 export class GradesComponent {
-  marks: number | null = null;
+  score: number | null = null;
   grade: string = '';
-  gradeColor: string = 'black';
+  errorMessage: string = '';
 
-  calculateGrade() {
-    if (this.marks === null || this.marks < 0 || this.marks > 100) {
+  constructor(private configService: ConfigService) {}
+
+  checkGrade() {
+    if (this.score === null || this.score < 0 || this.score > 100) {
+      this.errorMessage = 'Invalid marks. Please enter a number between 0 and 100.';
       this.grade = '';
       return;
     }
 
-    if (this.marks >= 90) {
-      this.grade = 'A';
-      this.gradeColor = 'green';
-    } else if (this.marks >= 80) {
-      this.grade = 'A-';
-      this.gradeColor = 'darkgreen';
-    } else if (this.marks >= 75) {
-      this.grade = 'B+';
-      this.gradeColor = 'blue';
-    } else if (this.marks >= 70) {
-      this.grade = 'B';
-      this.gradeColor = 'darkblue';
-    } else if (this.marks >= 65) {
-      this.grade = 'B-';
-      this.gradeColor = 'purple';
-    } else if (this.marks >= 60) {
-      this.grade = 'C+';
-      this.gradeColor = 'orange';
-    } else if (this.marks >= 50) {
-      this.grade = 'C';
-      this.gradeColor = 'darkorange';
-    } else if (this.marks >= 40) {
-      this.grade = 'D';
-      this.gradeColor = 'red';
-    } else {
-      this.grade = 'E (Fail)';
-      this.gradeColor = 'darkred';
-    }
+    this.configService.getGrades().subscribe(
+      (grades: Grade[]) => {
+        console.log("Grades fetched:", grades);
+
+        const matchedGrade = grades.find(g => this.score! >= g.minMark && this.score! <= g.maxMark);
+        
+        if (matchedGrade) {
+          this.grade = matchedGrade.grade;
+          this.errorMessage = '';
+        } else {
+          this.grade = '';
+          this.errorMessage = 'No grade found for this score.';
+        }
+      },
+      (error) => {
+        console.error('Error fetching grades:', error);
+        this.grade = '';
+        this.errorMessage = 'Could not fetch grades. Please try again later.';
+      }
+    );
   }
 }

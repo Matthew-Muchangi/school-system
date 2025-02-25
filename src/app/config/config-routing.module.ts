@@ -7,6 +7,7 @@ import { StreamsComponent } from './streams/streams.component';
 import { GradesComponent } from './grades/grades.component';
 import { ClassesComponent } from './classes/classes.component';
 
+
 const routes: Routes = [
   {
     path: '',

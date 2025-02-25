@@ -9,6 +9,7 @@ export class SidebarComponent {
   configDropdownOpen = false;
   studentsDropdownOpen = false;
 
+
   toggleConfigDropdown() {
     this.configDropdownOpen = !this.configDropdownOpen;
     if (this.configDropdownOpen) {
