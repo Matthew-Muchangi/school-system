@@ -23,8 +23,11 @@ export class ConfigService {
   getSubjects(): Observable<Subject[]> {
     return this.http.get<Subject[]>(`${this.subjectUrl}/subjects`);
   }
-  getGrades(): Observable<any[]> {
-    return this.http.get<Grade[]>(`${this.subjectUrl}/grades/score/{score}`);
+  getGrades(score:number): Observable<any> {
+    return this.http.get(`${this.subjectUrl}/grades/score/${score}`,{
+      responseType:'text',
+    });
+
   }
   
  

@@ -20,11 +20,11 @@ export class GradesComponent {
       return;
     }
 
-    this.configService.getGrades().subscribe(
-      (grades: Grade[]) => {
+    this.configService.getGrades(this.score).subscribe(
+      (grades) => {
         console.log("Grades fetched:", grades);
 
-        const matchedGrade = grades.find(g => this.score! >= g.minMark && this.score! <= g.maxMark);
+        const matchedGrade = grades.find((g: { minMark: number; maxMark: number; }) => this.score! >= g.minMark && this.score! <= g.maxMark);
         
         if (matchedGrade) {
           this.grade = matchedGrade.grade;
