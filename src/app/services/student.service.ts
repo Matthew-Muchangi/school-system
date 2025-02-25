@@ -9,7 +9,7 @@ export interface Student {
   dateofbirth: string;
   schoolClass: number;
   stream: number;
-  address: string;
+  address: string
     street: string;
     city: string;
     country: string;
@@ -32,6 +32,6 @@ export class StudentService {
 
   // Add a new student to the backend
   addStudent(student: Student): Observable<Student> {
-    return this.http.post<Student>(this.studentUrl, student);
+    return this.http.post<Student>(`${this.studentUrl}/register`, student);
   }
 }
