@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { StudentService, Student } from '../../services/student.service';
+import { ConfigService,Subject } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-dashboard',

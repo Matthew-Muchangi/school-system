@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { ConfigModule } from "../config/config.module";
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { AppRoutingModule } from './student-routing.module';
-import { StudentService } from '../services/student.service';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 

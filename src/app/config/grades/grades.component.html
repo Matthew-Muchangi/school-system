@@ -1,16 +1,27 @@
-<div class="container">
-    <h2>Grade Checker</h2>
+<div class="grade-checker">
+    <h2 class="title">Student Grade Checker</h2>
   
-    <label for="score">Enter Marks:</label>
-    <input type="number" [(ngModel)]="score" id="score" min="0" max="100" />
-  
-    <button (click)="checkGrade()">Check Grade</button>
-  
-    <div *ngIf="grade" class="success-message">
-      <p>Your Grade: <strong>{{ score }}</strong></p>
+    <div class="form-group">
+      <label for="score">Enter Your Marks:</label>
+      <input
+        type="number"
+        [(ngModel)]="score"
+        id="score"
+        min="0"
+        max="100"
+        class="input-field"
+        placeholder="Enter marks (0-100)"
+      />
     </div>
   
-    <div *ngIf="errorMessage" class="error-message">
+    <button (click)="checkGrade()" class="btn">Check Grade</button>
+  
+    <!-- ✅ This will now properly display the fetched grade -->
+    <div *ngIf="grades" class="result success">
+      <p >Your Grade: <strong>{{ grades }}</strong></p>
+    </div>
+  
+    <div *ngIf="errorMessage" class="result error">
       <p>{{ errorMessage }}</p>
     </div>
   </div>

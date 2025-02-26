@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ConfigRoutingModule } from './config-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { GradesComponent } from './grades/grades.component';
@@ -30,7 +30,8 @@ import { HttpClientModule} from '@angular/common/http';
     RouterModule,
     FormsModule,
     ConfigRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ], 
   exports: [
     SidebarComponent
