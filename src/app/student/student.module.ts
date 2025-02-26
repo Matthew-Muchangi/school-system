@@ -7,12 +7,15 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { AppRoutingModule } from './student-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StudentService } from '../services/student.service';
+import { StudentProfileComponent } from './student-profile/student-profile.component';
 
 
 @NgModule({
   declarations: [
     StudentDetailsComponent,
-    StudentDashboardComponent
+    StudentDashboardComponent,
+    StudentProfileComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
-]
+],
+providers: [StudentService], // ✅ Provide StudentService
 })
 export class StudentModule { }

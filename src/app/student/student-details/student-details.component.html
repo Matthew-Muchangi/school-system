@@ -12,7 +12,7 @@
 
     <!-- Form Container -->
     <div style="max-width: 700px; margin: 20px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-        <h2 style="text-align: center; color: #333;">Add New Student</h2>
+        <h2 style="text-align: center; color: black;">Add New Student</h2>
 
         <form [formGroup]="studentForm" (ngSubmit)="addStudent()" style="display: flex; flex-direction: column; gap: 15px;">
             
@@ -29,10 +29,20 @@
                 <h3 style="color: black; margin-top: 10px;">Date of Birth</h3>
                 <input formControlName="dateofbirth" type="date" required
                     style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <input formControlName="schoolClass" type="string" min="1" placeholder="Class" required
-                    style="width: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <input formControlName="stream" type="string" min="1" placeholder="Stream" required
-                    style="width: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+
+
+               <!-- Class Dropdown -->
+<select formControlName="schoolClass" required style="width: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+    <option value="" disabled selected>Select Class</option>
+    <option *ngFor="let class of classes" [value]="class.id">{{ class.className }}</option>
+</select>
+
+<!-- Stream Dropdown (Fix: Show Stream Names Instead of Objects) -->
+<select formControlName="stream" required style="width: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+    <option value="" disabled selected>Select Stream</option>
+    <option *ngFor="let stream of streams" [value]="stream.id">{{ stream.streamName }}</option>
+</select>
+
             </div>
 
             <!-- Address Fields -->
@@ -47,12 +57,7 @@
                     style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
             </div>
             
-            <input formControlName="address.postalCode" type="text" placeholder="Postal Code"
-                style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-
-                <input formControlName="subjectName" type="text" placeholder="Enter Subject"
-                style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-
+     
                 
 
             <!-- Submit Button -->

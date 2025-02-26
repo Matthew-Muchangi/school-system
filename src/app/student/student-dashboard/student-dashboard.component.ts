@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class StudentDashboardComponent {
   studentName: string = 'Student';
   notifications: number = 3;
+  subjectCount: number = 0;
 
   dashboardStats = {
     courses: 8,
@@ -20,7 +21,6 @@ export class StudentDashboardComponent {
     { name: 'Mathematics', code: 'MATH101', instructor: 'Dr. Smith', credits: 3 },
     { name: 'Computer Science', code: 'CS102', instructor: 'Prof. Johnson', credits: 4 },
   ];
-
   constructor() {}
 
   getNotifications(): string {

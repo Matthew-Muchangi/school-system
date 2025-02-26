@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Student {
+  id(id: any, selectedStudent: any): unknown;
   admissionNumber: number;
   firstName: string;
   lastName: string;
@@ -31,7 +32,11 @@ export class StudentService {
   }
 
   // Add a new student to the backend
-  addStudent(student: Student): Observable<Student> {
+  addStudent(student:any): Observable<Student> {
     return this.http.post<Student>(`${this.studentUrl}/register`, student);
   }
+  updateStudent(id: number, student: any): Observable<any> {
+    return this.http.put(`${this.studentUrl}/${id}`, student);
+  }
+
 }
