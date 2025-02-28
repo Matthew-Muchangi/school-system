@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   searchQuery: string = '';
   dropdownOpen: string | null = null;
   subjectCount: number = 0;
-  selectedStudent: any | null = null;
+  selectedStudent: Student | null = null;
   successMessage: string = '';
 
   constructor(
@@ -35,14 +35,17 @@ export class DashboardComponent implements OnInit {
   }
 
   loadStudents(): void {
+    this.isLoading = true;  // Show loading state
     this.studentService.getStudents().subscribe(
       (data) => {
+        console.log("Students fetched:", data); // Debugging: Log the response
         this.students = data;
         this.isLoading = false;
       },
+      
       (error) => {
-        this.errorMessage = 'Error fetching students';
-        console.error('Error fetching students:', error);
+        console.error('Error loading students:', error);
+        this.errorMessage = 'Failed to load students. Please try again.';
         this.isLoading = false;
       }
     );
@@ -60,31 +63,31 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  // ✅ Open Edit Modal
-  editStudent(student: Student): void {
-    this.selectedStudent = { ...student }; // Clone student data
+  editStudent(student: Student) {
+    this.selectedStudent = { ...student }; // Create a copy to prevent instant changes
   }
 
-  // ✅ Update Student
-  updateStudent(): void {
+  updateStudent() {
     if (this.selectedStudent) {
-      this.studentService.updateStudent(this.selectedStudent.id, this.selectedStudent).subscribe(
-        () => {
+      console.log("Updating Student:", this.selectedStudent); // Debugging: Check the student data
+  
+      this.studentService.updateStudent(this.selectedStudent).subscribe(
+        (response) => {
+          console.log("Student updated successfully:", response); // Debugging: Log response
+          this.loadStudents(); // Refresh student list
           this.successMessage = 'Student updated successfully!';
-          this.selectedStudent = null;
-          
-          // ✅ Reload student list to ensure UI updates
-          this.loadStudents();
+          this.closeModal();
         },
         (error) => {
           console.error('Error updating student:', error);
         }
       );
+    } else {
+      console.warn("No student selected for update!"); // Debugging: Log if no student is selected
     }
   }
   
 
-  // ✅ Close Modal
   closeModal(): void {
     this.selectedStudent = null;
   }

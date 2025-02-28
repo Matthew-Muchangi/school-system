@@ -6,7 +6,7 @@ import { SubjectsComponent } from './subjects/subjects.component';
 import { StreamsComponent } from './streams/streams.component';
 import { GradesComponent } from './grades/grades.component';
 import { ClassesComponent } from './classes/classes.component';
-
+import { StudentProfileComponent } from '../student/student-profile/student-profile.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,8 @@ const routes: Routes = [
       { path: 'subjects', component: SubjectsComponent },
       { path: 'streams', component: StreamsComponent },
       { path: 'grades', component: GradesComponent },
-      { path: 'classes', component: ClassesComponent }
+      { path: 'classes', component: ClassesComponent },
+      { path: 'student/:admissionNumber', component: StudentProfileComponent } // ✅ FIXED
     ]
   }
 ];

@@ -7,7 +7,7 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
 const routes: Routes = [
   {path: 'student-dashboard', component:StudentDashboardComponent},
   {path: 'student-details', component:StudentDetailsComponent},
-  {path: 'student-profile', component:StudentProfileComponent}
+  {path: 'student-profile/:admissionNumber', component:StudentProfileComponent}
 ];
 
 @NgModule({

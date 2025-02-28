@@ -13,10 +13,11 @@ export class StudentDetailsComponent implements OnInit {
   successMessage: string = '';
   classes: any[] = []; // Store classes
   streams: any[] = []; // Store streams
+  subjects: any[] = []; // Store subjects ✅
 
   constructor(
     private configService: ConfigService,
-    private studentService: StudentService, // ✅ Correctly inject StudentService
+    private studentService: StudentService, 
     private fb: FormBuilder
   ) {
     this.studentForm = this.fb.group({
@@ -25,6 +26,7 @@ export class StudentDetailsComponent implements OnInit {
       dateofbirth: ['', Validators.required],
       schoolClass: ['', Validators.required],
       stream: ['', Validators.required],
+      subjects: ['', Validators.required], // ✅ Ensure subjects field is added
       address: this.fb.group({
         street: [''],
         city: [''],
@@ -37,13 +39,14 @@ export class StudentDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.loadClasses();
     this.loadStreams();
+    this.loadSubjects(); // ✅ Load subjects
   }
 
   // ✅ Load classes from backend
   loadClasses(): void {
     this.configService.getClasses().subscribe(
       (data) => {
-        this.classes = data; // Ensure data is an array of class names/objects
+        this.classes = data; 
       },
       (error) => {
         console.error('Error fetching classes:', error);
@@ -55,10 +58,22 @@ export class StudentDetailsComponent implements OnInit {
   loadStreams(): void {
     this.configService.getStreams().subscribe(
       (data) => {
-        this.streams = data; // Ensure data is an array of stream names/objects
+        this.streams = data; 
       },
       (error) => {
         console.error('Error fetching streams:', error);
+      }
+    );
+  }
+
+  // ✅ Load subjects from backend
+  loadSubjects(): void {
+    this.configService.getSubjects().subscribe(
+      (data) => {
+        this.subjects = data;
+      },
+      (error) => {
+        console.error('Error fetching subjects:', error);
       }
     );
   }

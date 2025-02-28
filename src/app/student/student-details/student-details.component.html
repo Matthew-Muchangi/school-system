@@ -30,20 +30,28 @@
                 <input formControlName="dateofbirth" type="date" required
                     style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
 
+                <!-- Class Dropdown -->
+                <select formControlName="schoolClass" required style="width: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="" disabled selected>Select Class</option>
+                    <option *ngFor="let class of classes" [value]="class.id">{{ class.className }}</option>
+                </select>
 
-               <!-- Class Dropdown -->
-<select formControlName="schoolClass" required style="width: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-    <option value="" disabled selected>Select Class</option>
-    <option *ngFor="let class of classes" [value]="class.id">{{ class.className }}</option>
-</select>
-
-<!-- Stream Dropdown (Fix: Show Stream Names Instead of Objects) -->
-<select formControlName="stream" required style="width: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-    <option value="" disabled selected>Select Stream</option>
-    <option *ngFor="let stream of streams" [value]="stream.id">{{ stream.streamName }}</option>
-</select>
-
+                <!-- Stream Dropdown -->
+                <select formControlName="stream" required style="width: 100px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="" disabled selected>Select Stream</option>
+                    <option *ngFor="let stream of streams" [value]="stream.id">{{ stream.streamName }}</option>
+                </select>
             </div>
+
+            <!-- Subject Selection -->
+           <!-- Subject Selection (Single Select Dropdown) -->
+<h3 style="color: black; margin-top: 10px;">Select Subject</h3>
+<select formControlName="subject" required
+    style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+    <option value="" disabled selected>Select a Subject</option>
+    <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.subjectName }}</option>
+</select>
+
 
             <!-- Address Fields -->
             <h3 style="color: black; margin-top: 10px;">Address Details</h3>
@@ -56,9 +64,6 @@
                 <input formControlName="address.country" type="text" placeholder="Country" required
                     style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
             </div>
-            
-     
-                
 
             <!-- Submit Button -->
             <button type="submit" 

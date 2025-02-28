@@ -1,50 +1,57 @@
 <app-sidebar></app-sidebar>
 
 <div style="margin-left: 270px; padding: 20px; font-family: Arial, sans-serif; background-color: #F5EFFD;">
-    
+
     <!-- Student Profile Section -->
-    <div style="display: flex; align-items: center; background: white; padding: 5px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px;">
-        <img [src]="student.imageUrl"  style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
+     <h3></h3>
+    <div style="display: flex; align-items: center; background: white; padding: 15px; border-radius: 10px; 
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px;">
         <div>
-            <h4 style="margin: 0;">{{ student.name }}</h4>
-            <p style="margin: 0; color: gray;">{{ student.description }}</p>
+            <h3 style="margin: 0; color: black;">{{student.firstName}} {{student.lastName}}</h3>
+            <p style="margin: 5px 0 0; color: black;">
+                Class: {{student.schoolClass}}
+                Stream:{{student.stream}}
+            </p>
         </div>
     </div>
 
     <!-- Stats Cards -->
-    <div style="display: flex; justify-content: space-between; gap: 15px; margin-bottom: 20px;">
-        <div *ngFor="let stat of stats" style="flex: 1; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <!-- <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+        <div *ngFor="let stat of stats" style="flex: 1; min-width: 200px; background: white; padding: 20px; 
+                border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;">
             <h4 style="margin: 0; color: #555;">{{ stat.title }}</h4>
-            <h2 style="margin: 5px 0;">{{ stat.value }}</h2>
+            <h2 style="margin: 5px 0; color: #333;">{{ stat.value }}</h2>
+        </div>
+    </div> -->
+
+    <!-- Charts Section -->
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 300px; background: white; padding: 20px; 
+                    border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h4>Exam Performance</h4>
+            <canvas id="performanceChart"></canvas>
+        </div>
+
+        <div style="flex: 1; min-width: 300px; background: white; padding: 20px; 
+                    border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h4>Attendance</h4>
+            <canvas id="attendanceChart"></canvas>
         </div>
     </div>
 
-    <!-- Charts and Data -->
-    <div style="display: flex; gap: 20px;">
-        <div style="flex: 1; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-            <h4>Follower Interest</h4>
-            <canvas id="interestChart"></canvas>
-        </div>
-
-        <div style="flex: 1; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-            <h4>Social Platform Audience & Posts</h4>
-            <canvas id="platformChart"></canvas>
-        </div>
-    </div>
-
-    <!-- Audience Location Table -->
-    <div style="margin-top: 20px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <h4>Subjects List</h4>
+    <!-- Subjects List Table -->
+    <div style="margin-top: 20px; background: white; padding: 20px; border-radius: 10px; 
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h4>Subjects & Grades</h4>
         <table style="width: 100%; border-collapse: collapse;">
             <tr style="background: #F3E8FF;">
-                <th style="padding: 10px; text-align: left;">Subjects</th>
-                <th style="padding: 10px; text-align: left;">Grade</th>
-              
+                <th style="padding: 12px; text-align: left;">Subject</th>
+                <th style="padding: 12px; text-align: left;">Grade</th>
             </tr>
-            <tr *ngFor="let audience of audienceData">
-                <td style="padding: 10px;">{{ audience.country }}</td>
-                <td style="padding: 10px;">{{ audience.audiences | number }}</td>
-                
+            <tr *ngFor="let subject of student">
+                <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{ subject.name }}</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{ subject.grade }}</td>
+            </tr>
         </table>
     </div>
 </div>

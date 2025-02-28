@@ -1,63 +1,87 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import Chart from 'chart.js/auto';
+import { Chart } from 'chart.js/auto';
+import { ActivatedRoute } from '@angular/router';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-student-profile',
   templateUrl: './student-profile.component.html',
-  styleUrls: []
+  styleUrls: ['./student-profile.component.css']
 })
 export class StudentProfileComponent implements OnInit, AfterViewInit {
 
-  student = {
-    name: 'Double M',
-    description: 'Form 4 Student',
-    imageUrl: 'src/assets/matthew.jpg' // Update with the correct path
-  };
+  student: any = {}; 
+ 
+  isLoading: boolean = true; 
+  errorMessage: string = '';
 
-  stats = [
-    { title: 'Total Subjects', value: '10'},
-    { title: 'Average Grade', value: 'B'},
-    { title: 'Form', value: '4'},
-    { title: 'Class', value: 'West'}
-  ];
+  constructor(
+    private studentService: StudentService,
+    private route: ActivatedRoute
+  ) {}
 
-  audienceData = [
-    { country: 'Brazil', audiences: 2304902, percentage: 3.5 },
-    { country: 'USA', audiences: 1927810, percentage: 1.2 },
-    { country: 'Canada', audiences: 1301571, percentage: -4.7 },
-    { country: 'Australia', audiences: 1127421, percentage: 3.9 }
-  ];
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadStudentProfile();
+  }
 
   ngAfterViewInit(): void {
     this.loadCharts();
   }
 
-  loadCharts(): void {
-    new Chart("interestChart", {
-      type: 'radar',
-      data: {
-        labels: ['Fashion', 'Technology', 'Cars', 'Memes', 'Cosmetics', 'Watches', 'Others'],
-        datasets: [
-          { label: 'TikTok', data: [40, 35, 30, 50, 28, 45, 38], borderColor: 'blue', fill: false },
-          { label: 'Twitter', data: [20, 30, 50, 60, 33, 25, 20], borderColor: 'green', fill: false },
-          { label: 'Facebook', data: [35, 40, 20, 25, 30, 28, 33], borderColor: 'orange', fill: false }
-        ]
-      }
-    });
+  // ✅ Fetch Student Data
+  loadStudentProfile(): void {
+    const admissionNumber = this.route.snapshot.paramMap.get('admissionNumber'); 
+    if (admissionNumber) {
+      this.studentService.getStudentbyadmissionNumber(admissionNumber).subscribe(
+        (data) => {
+          if (data) {
+            this.student = data;
+          
+            this.loadCharts(); 
+          } else {
+            this.errorMessage = "Student data not found.";
+          }
+          this.isLoading = false; 
+        },
+        (error) => {
+          console.error('Error fetching student data:', error);
+          this.errorMessage = 'Failed to load student data.';
+          this.isLoading = false; 
+        }
+      );
+    }
+  }
 
-    new Chart("platformChart", {
-      type: 'pie',
-      data: {
-        labels: ['Instagram', 'TikTok', 'Facebook'],
-        datasets: [{
-          data: [1108230, 608712, 370417],
-          backgroundColor: ['#4CAF50', '#FFC107', '#2196F3']
-        }]
-      }
-    });
+  // ✅ Update Stats Dynamically
+ 
+
+  // ✅ Load Charts Dynamically
+  loadCharts(): void {
+    if (!this.student?.subjects || this.student.subjects.length === 0) return; 
+
+    setTimeout(() => {
+      new Chart("interestChart", {
+        type: 'radar',
+        data: {
+          labels: this.student.subjects.map((sub: any) => sub.name), 
+          datasets: [
+            {
+              label: 'Current Score',
+              data: this.student.subjects.map((sub: any) => sub.score || 0), 
+              borderColor: 'blue',
+              fill: false
+            },
+            {
+              label: 'Class Average',
+              data: this.student.subjects.map((sub: any) => sub.classAverage || 0),
+              borderColor: 'gray',
+              fill: false
+            }
+          ]
+        }
+      });
+
+      
+    }, 500);
   }
 }
