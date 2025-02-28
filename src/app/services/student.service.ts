@@ -17,9 +17,10 @@ export interface Student {
     postalCode: string;
   };
   imageUrl?: string;  // Optional profile image
-  subjects: { name: string; grade: string }[]; // Subjects list
+  subjects: { id:number; subjectName: string }[]; // Subjects list
 
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,9 @@ export class StudentService {
 
   getStudentbyadmissionNumber(admissionNumber:string):Observable<Student>{
     return this.http.get<Student>(`${this.studentUrl}/admission/${admissionNumber}`);
+  }
+  getSubjects(admissionNumber:any): Observable<any[]> {
+    return this.http.get<any[]>(`${this.studentUrl}/${admissionNumber}/subjects`);
   }
 
 

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Subject {
+subjectIds: any;
   id: number;  // Assuming each subject has an ID
   subjectName: string;
 }
