@@ -1,0 +1,58 @@
+<div style="display: flex;">
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+  
+    <!-- Main Content -->
+    <div style="flex-grow: 1; margin-left: 250px; padding: 20px;">
+      <div style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; border-radius: 10px; background-color: #fff;">
+        <h2 style="text-align: center; color: black; margin-bottom: 20px;">Student Grades Report</h2>
+  
+        <!-- Input Section -->
+        <div style="max-width: 600px; margin: 0 auto 20px;">
+          <label for="admissionNumber" style="font-weight: bold;">Enter Admission Number:</label>
+          <div style="display: flex; gap: 10px;">
+            <input
+              type="text"
+              id="admissionNumber"
+              [(ngModel)]="admissionNumber"
+              placeholder="Enter admission number"
+              style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"
+            />
+            <button 
+              (click)="fetchGrades()" 
+              style="background-color: black; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">
+              Get Grades
+            </button>
+          </div>
+        </div>
+  
+        <!-- Grades Display Section -->
+        <div *ngIf="grades.length > 0" style="margin-top: 20px;">
+          <h4 style="text-align: center; color: #28a745;">Grades for Admission #{{ admissionNumber }}</h4>
+          <div style="overflow-x: auto; margin-top: 10px;">
+            <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+              <thead style="background-color: #343a40; color: white;">
+                <tr>
+                  <th style="padding: 10px; border: 1px solid #ddd;">Subject</th>
+                  <th style="padding: 10px; border: 1px solid #ddd;">Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of grades ">
+                  <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">{{ student.subject }}</td>
+                  <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">{{ student.grade }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <!-- No Data Message -->
+        <div *ngIf="grades.length === 0 && admissionNumber" 
+             style="margin-top: 20px; text-align: center; padding: 10px; background-color: #ffc107; border-radius: 5px;">
+          <p>No grades found for admission number <strong>{{ admissionNumber }}</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

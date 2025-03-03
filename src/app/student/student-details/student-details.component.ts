@@ -93,3 +93,5 @@ export class StudentDetailsComponent implements OnInit {
     }
   }
 }
+
+

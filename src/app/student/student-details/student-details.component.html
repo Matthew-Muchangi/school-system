@@ -45,12 +45,13 @@
 
             <!-- Subject Selection -->
            <!-- Subject Selection (Single Select Dropdown) -->
-<h3 style="color: black; margin-top: 10px;">Select Subject</h3>
-<select formControlName="subject" required
-    style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-    <option value="" disabled selected>Select a Subject</option>
-    <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.subjectName }}</option>
-</select>
+           <h3 style="color: black; margin-top: 10px;">Select Subject</h3>
+           <select formControlName="subjects" required
+               style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+               <option value="" disabled selected>Select a Subject</option>
+               <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.subjectName }}</option>
+           </select>
+           
 
 
             <!-- Address Fields -->
@@ -70,6 +71,7 @@
                 style="padding: 12px; background: black; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
                 Add Student
             </button>
+            
         </form>
 
         <p *ngIf="successMessage" style="text-align: center; color: green; margin-top: 15px;">{{ successMessage }}</p>

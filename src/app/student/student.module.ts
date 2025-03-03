@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentService } from '../services/student.service';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { GradesReportComponent } from './grades-report/grades-report.component';
 
 
 @NgModule({
   declarations: [
     StudentDetailsComponent,
     StudentDashboardComponent,
-    StudentProfileComponent
+    StudentProfileComponent,
+    GradesReportComponent
   ],
   imports: [
     CommonModule,
