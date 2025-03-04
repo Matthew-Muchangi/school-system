@@ -87,10 +87,16 @@
     </div>
   
     <!-- Logout Button -->
-    <a routerLink="/login" style="text-decoration: none;">
-      <button style="width: 100%; padding: 12px; border: none; background: black; color: white; font-weight: bold; border-radius: 5px; display: flex; align-items: center;">
-        <i class="fa-solid fa-sign-out-alt" style="color: #ffffff; margin-right: 10px;"></i> Logout
-      </button>
-    </a>
+    <button 
+    (click)="logout()" 
+    style="width: 100%; padding: 10px; background-color: black; color: white; 
+           border: none; border-radius: 5px; font-weight: bold; cursor: pointer;
+           transition: background-color 0.3s ease-in-out;"
+    onmouseover="this.style.backgroundColor='#c9302c'"
+    onmouseout="this.style.backgroundColor='#d9534f'">
+     Logout
+  </button>
+  
+
   </nav>
   

@@ -49,5 +49,6 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    window.location.href = '/login'; // Redirect to login page
   }
 }
