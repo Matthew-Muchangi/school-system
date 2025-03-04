@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { StudentService, Student } from '../../services/student.service';
 import { ConfigService } from 'src/app/services/config.service';
+import { AuthService } from 'src/app/services/auth.service';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -23,14 +24,18 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   studentChartInstance: Chart | null = null;
   subjectChartInstance: Chart | null = null;
   subjectMap: { [key: number]: string } = {};
+  username: string | null | undefined;
 
-  constructor(private studentService: StudentService, private configService: ConfigService) {}
+  constructor(
+    private studentService: StudentService, 
+    private configService: ConfigService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.fetchLoggedInUser();
     this.loadStudents();
     this.loadSubjects();
-    
   }
 
   ngAfterViewInit(): void {
@@ -44,9 +49,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }, 500);
   }
 
+  // ✅ Fetch the logged-in user's username from AuthService
   fetchLoggedInUser(): void {
-    const user = localStorage.getItem('username') || 'Admin';
-    this.adminName = user;
+    this.username = this.authService.getUsername() ;
   }
 
   loadStudents(): void {
@@ -182,8 +187,4 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.renderSubjectChart();
     }
   }
-
-
-
-  
 }

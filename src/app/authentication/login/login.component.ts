@@ -17,10 +17,12 @@ export class LoginComponent {
   login() {
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        console.log('✅ Login Response:', response); // Log the response
-  
-        if (response.token) {  // Ensure backend sends a token
-          localStorage.setItem('token', response.token);
+        console.log('✅ Login Response:', response);
+
+        if (response.token) {  
+          // Save token & username
+          this.authService.setAuthData(response.token, this.username);
+
           this.router.navigate(['/dashboard']);
         } else {
           this.errorMessage = 'Login failed. No token received.';
@@ -32,5 +34,4 @@ export class LoginComponent {
       }
     );
   }
-  
 }

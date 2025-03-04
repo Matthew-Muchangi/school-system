@@ -18,15 +18,16 @@ export class AuthService {
   
     return this.http.post<any>(this.apiUrl, { username, password }, { headers }).pipe(
       catchError((error) => {
-        console.error('❌ Login error:', error); // Log the error
+        console.error('❌ Login error:', error);
         return throwError(() => new Error(error.error?.message || 'Login failed'));
       })
     );
   }
 
-  // ✅ Save token to localStorage
-  setToken(token: string): void {
+  // ✅ Save token & username to localStorage
+  setAuthData(token: string, username: string): void {
     localStorage.setItem('token', token);
+    localStorage.setItem('username', username);
   }
 
   // ✅ Get token
@@ -34,13 +35,19 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  // ✅ Get username
+  getUsername(): string | null {
+    return localStorage.getItem('username');
+  }
+
   // ✅ Check if user is authenticated
   isAuthenticated(): boolean {
     return !!this.getToken();
   }
 
-  // ✅ Logout (remove token)
+  // ✅ Logout (remove token & username)
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
   }
 }
