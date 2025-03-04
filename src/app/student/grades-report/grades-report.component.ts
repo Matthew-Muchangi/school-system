@@ -8,7 +8,8 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class GradesReportComponent {
   admissionNumber: string = '';
-  grades: { subject: string; grade: string }[] = [];
+  grades: { subject: string; grade: string;  }[] = [];
+  subjects:{ subjectId: number; } | undefined
 
   constructor(private studentService: StudentService) {}
 

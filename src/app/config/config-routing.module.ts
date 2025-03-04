@@ -13,6 +13,7 @@ const routes: Routes = [
     path: '',
     component: ConfigLayoutComponent, // Layout with Sidebar
     children: [
+      {path: '', component:DashboardComponent},
       { path: 'dashboard', component: DashboardComponent },
       { path: 'subjects', component: SubjectsComponent },
       { path: 'streams', component: StreamsComponent },

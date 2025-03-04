@@ -34,7 +34,8 @@ import { HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule
   ], 
   exports: [
-    SidebarComponent
+    SidebarComponent,
+    DashboardComponent
   ]
 })
 export class ConfigModule { }

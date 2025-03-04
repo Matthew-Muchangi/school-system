@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,23 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-  errorMessage: string = '';
+  username = '';
+  password = '';
+  errorMessage = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {  // Inject Router
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      console.log('Login Successful:', this.loginForm.value);
-      this.errorMessage = '';
-      this.router.navigate(['/dashboard']);  // Navigate to Dashboard
-    } else {
-      this.errorMessage = 'Invalid username or password';
-    }
+  login(): void {
+    this.authService.login({ username: this.username, password: this.password }).subscribe(
+      (response) => {
+        this.authService.setToken(response.token); // Store JWT token
+        this.router.navigate(['/dashboard']); // Redirect to dashboard
+      },
+      (error) => {
+        this.errorMessage = 'Invalid credentials. Please try again.';
+      }
+    );
   }
 }

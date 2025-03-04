@@ -12,7 +12,7 @@
     <app-sidebar></app-sidebar>
 
     <!-- Main Content -->
-    <div style="margin-left: 270px; padding: 20px;">
+    <div style="margin-left: 0px; padding: 20px;">
         <!-- Top Navbar -->
         <div style="display: flex; justify-content: space-between; align-items: center; background-color: white; padding: 15px; border-radius: 10px;">
             <router-outlet></router-outlet>
@@ -35,34 +35,28 @@
 
         <!-- Dashboard Cards -->
         <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-            <div style="background: #F3E8FF; padding: 20px; border-radius: 10px; width: 23%; text-align: center;">
+            <div style="background: #F3E8FF; padding: 20px; border-radius: 10px; width: 50%; text-align: center;">
                 <h3>Students</h3>
                 <p style="font-size: 20px; font-weight: bold;">{{ students.length }}</p>
             </div>
-            <div style="background: #D6F5FC; padding: 20px; border-radius: 10px; width: 23%; text-align: center;">
+            <div style="background: #D6F5FC; padding: 20px; border-radius: 10px; width: 50%; text-align: center;">
                 <h3>Subjects</h3>
                 <p style="font-size: 20px; font-weight: bold;">{{ subjectCount }}</p>
             </div>
-            <div style="background: #FFE7C4; padding: 20px; border-radius: 10px; width: 23%; text-align: center;">
-                <h3>Parents</h3>
-                <p style="font-size: 20px; font-weight: bold;">5.6K</p>
-            </div>
-            <div style="background: #C9F4C7; padding: 20px; border-radius: 10px; width: 23%; text-align: center;">
-                <h3>Earnings</h3>
-                <p style="font-size: 20px; font-weight: bold;">$19.3K</p>
-            </div>
+           
         </div>
 
         <!-- Graph and Student Data -->
         <div style="display: flex; margin-top: 20px;">
-            <div style="flex: 2; background: white; padding: 20px; border-radius: 10px; margin-right: 20px;">
-                <h3>All Exam Results</h3>
-                <p>Graph will be here</p>
+            <div style="flex: 1; background: white; padding: 20px; border-radius: 10px; margin-right: 20px;">
+                <h3>Total Students</h3>
+    <canvas #studentChart></canvas>
             </div>
-            <div style="flex: 1; background: white; padding: 20px; border-radius: 10px;">
-                <h3>Students</h3>
-                <p>Pie chart will be here</p>
+            <div style="flex: 1; background: white; padding: 20px; border-radius: 10px; margin-right: 20px;">
+                <h3>Total Subjects</h3>
+                <canvas #subjectChart></canvas>
             </div>
+            
         </div>
 
        <!-- Student List -->
@@ -135,27 +129,6 @@
 
 <!-- Success Message -->
 <p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
-
-<!-- Modal Styling -->
-<style>
-  .modal {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-  }
-</style>
-
     </div>
 </body>
 </html>

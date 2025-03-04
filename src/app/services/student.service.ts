@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
 export interface Student {
+  classId: any;
   id: number;
   admissionNumber: number;
   firstName: string;
   lastName: string;
   dateofbirth: string;
-  schoolClass: number;
+  schoolClass: string;
   stream: string;
   address: {
     street: string;
@@ -39,6 +40,11 @@ export class StudentService {
   getStudentById(studentId: string): Observable<Student> {
     return this.http.get<Student>(`${this.studentUrl}/${studentId}`);
   }
+  
+  getGrades(admissionNumber: string): Observable<{ subjectName: string; grade: string }[]> {
+    return this.http.get<{ subjectName: string; grade: string }[]>(`${this.studentUrl}/${admissionNumber}/subjects`);
+  }
+  
 
   getStudentbyadmissionNumber(admissionNumber:string):Observable<Student>{
     return this.http.get<Student>(`${this.studentUrl}/admission/${admissionNumber}`);
@@ -65,6 +71,7 @@ export class StudentService {
   
     return this.http.put(updateUrl, student);
   }
+  
   
   
 }
