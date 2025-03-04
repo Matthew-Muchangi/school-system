@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./student-dashboard.component.css']
 })
 export class StudentDashboardComponent {
+  admissionNumber: string = ' ';
   studentName: string = 'Student';
   notifications: number = 3;
   subjectCount: number = 0;

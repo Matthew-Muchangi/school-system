@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +8,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  errorMessage = '';
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  login(): void {
-    this.authService.login({ username: this.username, password: this.password }).subscribe(
+  login() {
+    this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        this.authService.setToken(response.token); // Store JWT token
-        this.router.navigate(['/dashboard']); // Redirect to dashboard
+        console.log('✅ Login Response:', response); // Log the response
+  
+        if (response.token) {  // Ensure backend sends a token
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.errorMessage = 'Login failed. No token received.';
+        }
       },
       (error) => {
-        this.errorMessage = 'Invalid credentials. Please try again.';
+        console.error('❌ Login Error:', error);
+        this.errorMessage = 'Invalid username or password';
       }
     );
   }
+  
 }

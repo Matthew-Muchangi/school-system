@@ -15,22 +15,15 @@
 
     <!-- Dashboard Cards -->
     <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-        <div style="background: #F3E8FF; padding: 20px; border-radius: 10px; width: 23%; text-align: center;">
+        <div style="background: #F3E8FF; padding: 20px; border-radius: 10px; width: 40%; text-align: center;">
             <h3>Subjects</h3>
             <p style="font-size: 20px; font-weight: bold;">{{subjectCount}}</p>
         </div>
-        <div style="background: #D6F5FC; padding: 20px; border-radius: 10px; width: 23%; text-align: center;">
+        <div style="background: #D6F5FC; padding: 20px; border-radius: 10px; width: 40%; text-align: center;">
             <h3>Assignments</h3>
             <p style="font-size: 20px; font-weight: bold;">{{ dashboardStats.assignments }}</p>
         </div>
-        <div style="background: #FFE7C4; padding: 20px; border-radius: 10px; width: 23%; text-align: center;">
-            <h3>Fee Balance</h3>
-            <p style="font-size: 20px; font-weight: bold;">{{ dashboardStats.FeeBalance }}</p>
-        </div>
-        <div style="background: #C9F4C7; padding: 20px; border-radius: 10px; width: 23%; text-align: center;">
-            <h3>GPA</h3>
-            <p style="font-size: 20px; font-weight: bold;">{{ dashboardStats.gpa }}</p>
-        </div>
+       
         
     </div>
 
@@ -41,26 +34,26 @@
             <p>Graph will be here</p>
         </div>
         <div style="flex: 1; background: white; padding: 20px; border-radius: 10px;">
-            <h3>Attendance</h3>
+            <h3>Subjects</h3>
             <p>Pie chart will be here</p>
         </div>
     </div>
 
     <!-- Course List -->
     <div style="margin-top: 20px; background: white; padding: 20px; border-radius: 10px;">
-        <h3>Enrolled Courses</h3>
+        <h3>Enrolled Subjects</h3>
         <table style="width: 100%; border-collapse: collapse;">
             <tr style="background: #F3E8FF;">
-                <th style="padding: 10px; text-align: left;">Course</th>
+                <th style="padding: 10px; text-align: left;">Subject</th>
                 <th style="padding: 10px; text-align: left;">Code</th>
-                <th style="padding: 10px; text-align: left;">Instructor</th>
-                <th style="padding: 10px; text-align: left;">Credits</th>
+                <!-- <th style="padding: 10px; text-align: left;">Instructor</th>
+                <th style="padding: 10px; text-align: left;">Credits</th> -->
             </tr>
             <tr *ngFor="let course of courses">
                 <td style="padding: 10px;">{{ course.name }}</td>
                 <td style="padding: 10px;">{{ course.code }}</td>
-                <td style="padding: 10px;">{{ course.instructor }}</td>
-                <td style="padding: 10px;">{{ course.credits }}</td>
+                <!-- <td style="padding: 10px;">{{ course.instructor }}</td>
+                <td style="padding: 10px;">{{ course.credits }}</td> -->
             </tr>
         </table>
     </div>

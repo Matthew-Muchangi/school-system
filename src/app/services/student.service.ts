@@ -44,7 +44,8 @@ export class StudentService {
   getGrades(admissionNumber: string): Observable<{ subjectName: string; grade: string }[]> {
     return this.http.get<{ subjectName: string; grade: string }[]>(`${this.studentUrl}/${admissionNumber}/subjects`);
   }
-  
+
+
 
   getStudentbyadmissionNumber(admissionNumber:string):Observable<Student>{
     return this.http.get<Student>(`${this.studentUrl}/admission/${admissionNumber}`);

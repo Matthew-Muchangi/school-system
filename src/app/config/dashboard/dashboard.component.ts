@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   successMessage: string = '';
   studentChartInstance: Chart | null = null;
   subjectChartInstance: Chart | null = null;
+  subjectMap: { [key: number]: string } = {};
 
   constructor(private studentService: StudentService, private configService: ConfigService) {}
 
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.fetchLoggedInUser();
     this.loadStudents();
     this.loadSubjects();
+    
   }
 
   ngAfterViewInit(): void {
@@ -180,4 +182,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.renderSubjectChart();
     }
   }
+
+
+
+  
 }
